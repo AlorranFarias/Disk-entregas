@@ -1,291 +1,397 @@
 <!doctype html>
 <html lang="pt-BR">
-  <head>
+
+<head>
     <!-- =====================================================
          CONFIGURAÇÕES BÁSICAS DA PÁGINA
          ===================================================== -->
 
     <!-- Permite utilizar caracteres como ç, ã, é, etc. -->
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8">
 
     <!-- Faz o site funcionar corretamente em celulares -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Nome exibido na aba do navegador -->
     <title>Água & Gás</title>
 
     <!-- Arquivo responsável pelo visual do site -->
-    <link rel="stylesheet" href="/css/style.css" />
-  </head>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
 
-  <body>
+<body>
+
     <!-- =====================================================
          CONTAINER PRINCIPAL
          Todo o conteúdo da página fica aqui dentro.
          ===================================================== -->
+
     <main class="container">
-      <!-- =====================================================
+
+        <!-- =====================================================
              CABEÇALHO
              ===================================================== -->
-      <header>
-        <!-- Nome da empresa -->
-        <h1>ÁGUA & GÁS</h1>
 
-        <!-- Descrição da empresa -->
-        <p>Peça sua água ou gás de forma rápida e fácil.</p>
-      </header>
+        <header>
+            <!-- Nome da empresa -->
+            <h1>ÁGUA & GÁS</h1>
 
-      <!-- =====================================================
+            <!-- Descrição da empresa -->
+            <p>Peça sua água ou gás de forma rápida e fácil.</p>
+        </header>
+
+
+        <!-- =====================================================
              PRODUTOS
              Aqui o cliente escolhe a quantidade de água e gás.
              ===================================================== -->
-      <section>
-        <h2>PRODUTOS — SELECIONE</h2>
 
-        <!-- ===================== ÁGUA ===================== -->
-        <div class="produto">
-          <!-- Imagem da água -->
-          <img
-            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/agua-JgZS2rcspgT8cYBikVsJyADTEUoL0s.webp"
-            alt="Água Mineral 20L"
-          />
+        <section>
 
-          <!-- Informações da água -->
-          <div class="produto-info">
-            <strong>Água Mineral 20L</strong>
+            <h2>PRODUTOS — SELECIONE</h2>
 
-            <b class="agua"> R$ 6,50 </b>
-          </div>
 
-          <!-- Controle de quantidade -->
-          <div class="controle agua-bg">
-            <!-- Diminuir quantidade -->
-            <button type="button" onclick="alterarQuantidade('agua', -1)">
-              −
-            </button>
+            <!-- ===================== ÁGUA ===================== -->
 
-            <!-- Quantidade atual -->
-            <span id="quantidade-agua">0</span>
+            <div class="produto">
 
-            <!-- Aumentar quantidade -->
-            <button type="button" onclick="alterarQuantidade('agua', 1)">
-              +
-            </button>
-          </div>
-        </div>
+                <!-- Imagem da água -->
+                <img
+                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/agua-JgZS2rcspgT8cYBikVsJyADTEUoL0s.webp"
+                    alt="Água Mineral 20L"
+                >
 
-        <!-- ====================== GÁS ====================== -->
-        <div class="produto">
-          <!-- Imagem do gás -->
-          <img
-            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/gas-ilJqeSXCYndpaoGcPdztcKReqQavNZ.png"
-            alt="Botijão de gás"
-          />
+                <!-- Informações da água -->
+                <div class="produto-info">
+                    <strong>Água Mineral 20L</strong>
+                    <b class="agua">R$ 6,50</b>
+                </div>
 
-          <!-- Informações do gás -->
-          <div class="produto-info">
-            <strong>Gás</strong>
+                <!-- Controle de quantidade -->
+                <div class="controle agua-bg">
 
-            <b class="gas"> R$ 125,00 </b>
-          </div>
+                    <!-- Diminuir quantidade -->
+                    <button
+                        type="button"
+                        onclick="alterarQuantidade('agua', -1)"
+                    >
+                        −
+                    </button>
 
-          <!-- Controle de quantidade -->
-          <div class="controle gas-bg">
-            <!-- Diminuir quantidade -->
-            <button type="button" onclick="alterarQuantidade('gas', -1)">
-              −
-            </button>
-            <!-- Quantidade atual -->
-            <span id="quantidade-gas">0</span>
+                    <!-- Quantidade atual -->
+                    <span id="quantidade-agua">0</span>
 
-            <!-- Aumentar quantidade -->
-            <button type="button" onclick="alterarQuantidade('gas', 1)">
-              +
-            </button>
-          </div>
-        </div>
-      </section>
+                    <!-- Aumentar quantidade -->
+                    <button
+                        type="button"
+                        onclick="alterarQuantidade('agua', 1)"
+                    >
+                        +
+                    </button>
 
-      <!-- =====================================================
+                </div>
+
+            </div>
+
+
+            <!-- ====================== GÁS ====================== -->
+
+            <div class="produto">
+
+                <!-- Imagem do gás -->
+                <img
+                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/gas-ilJqeSXCYndpaoGcPdztcKReqQavNZ.png"
+                    alt="Botijão de gás"
+                >
+
+                <!-- Informações do gás -->
+                <div class="produto-info">
+                    <strong>Gás</strong>
+                    <b class="gas">R$ 125,00</b>
+                </div>
+
+                <!-- Controle de quantidade -->
+                <div class="controle gas-bg">
+
+                    <!-- Diminuir quantidade -->
+                    <button
+                        type="button"
+                        onclick="alterarQuantidade('gas', -1)"
+                    >
+                        −
+                    </button>
+
+                    <!-- Quantidade atual -->
+                    <span id="quantidade-gas">0</span>
+
+                    <!-- Aumentar quantidade -->
+                    <button
+                        type="button"
+                        onclick="alterarQuantidade('gas', 1)"
+                    >
+                        +
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
              DADOS DO CLIENTE
              ===================================================== -->
-      <section class="secao">
-        <h2>SEUS DADOS</h2>
 
-        <!-- Nome/apelido -->
-        <input id="nome" type="text" placeholder="Nome/apelido *" />
+        <section class="secao">
 
-        <!-- WhatsApp -->
-        <input id="whatsapp" type="tel" placeholder="WhatsApp *" />
+            <h2>SEUS DADOS</h2>
 
-        <!-- Ponto de referência -->
-        <input id="referencia" type="text" placeholder="Ponto de referência" />
+            <!-- Nome/apelido -->
+            <input
+                id="nome"
+                type="text"
+                placeholder="Nome/apelido *"
+            >
 
-        <!-- Observação opcional -->
-        <textarea
-          id="observacao"
-          placeholder="Observação (opcional)"
-        ></textarea>
-      </section>
+            <!-- WhatsApp -->
+            <input
+                id="whatsapp"
+                type="tel"
+                placeholder="WhatsApp *"
+            >
 
-      <!-- =====================================================
+            <!-- Ponto de referência -->
+            <input
+                id="referencia"
+                type="text"
+                placeholder="Ponto de referência"
+            >
+
+            <!-- Observação opcional -->
+            <textarea
+                id="observacao"
+                placeholder="Observação (opcional)"
+            ></textarea>
+
+        </section>
+
+
+        <!-- =====================================================
              LOCAL DE ENTREGA
              ===================================================== -->
-      <section class="secao">
-        <h2>📍 LOCAL DE ENTREGA:</h2>
 
-        <div class="opcoes-entrega">
-          <!-- ===================== RIACHÃO ===================== -->
-          <label class="opcao-entrega selecionada">
-            <!--
+        <section class="secao">
+
+            <h2>📍 LOCAL DE ENTREGA:</h2>
+
+            <div class="opcoes-entrega">
+
+
+                <!-- ===================== RIACHÃO ===================== -->
+
+                <label class="opcao-entrega selecionada">
+
+                    <input
+                        type="radio"
                         name="local"
-                        Faz todas as opções pertencerem ao mesmo grupo.
+                        value="Riachão"
+                        data-taxa="0"
+                        checked
+                    >
 
-                        value
-                        É o nome que será enviado para o pedido.
+                    <span class="icone-local">📍</span>
 
-                        data-taxa
-                        Guarda o valor da taxa de entrega.
-                    -->
-            <input
-              type="radio"
-              name="local"
-              value="Riachão"
-              data-taxa="0"
-              checked
-            />
+                    <strong>Riachão</strong>
 
-            <span class="icone-local">📍</span>
+                </label>
 
-            <strong>Riachão</strong>
-          </label>
 
-          <!-- ================= RIACHÃO DE CIMA ================= -->
-          <label class="opcao-entrega">
-            <input
-              type="radio"
-              name="local"
-              value="Riachão de Cima"
-              data-taxa="5"
-            />
+                <!-- ================= RIACHÃO DE CIMA ================= -->
 
-            <span class="icone-local">📍</span>
+                <label class="opcao-entrega">
 
-            <strong>Riachão de Cima</strong>
-          </label>
-        </div>
+                    <input
+                        type="radio"
+                        name="local"
+                        value="Riachão de Cima"
+                        data-taxa="5"
+                    >
 
-        <!-- Aviso exibido somente quando Riachão de Cima for selecionado -->
-        <div id="aviso-riachao-cima" class="aviso-entrega">
-          ⚠ Riachão de Cima: mínimo de 2 águas.
-        </div>
-      </section>
+                    <span class="icone-local">📍</span>
 
-      <!-- =====================================================
+                    <strong>Riachão de Cima</strong>
+
+                </label>
+
+            </div>
+
+
+            <!-- Aviso exibido somente quando Riachão de Cima for selecionado -->
+
+            <div
+                id="aviso-riachao-cima"
+                class="aviso-entrega"
+            >
+                ⚠ Riachão de Cima: mínimo de 2 águas.
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
              FORMA DE PAGAMENTO
              ===================================================== -->
-      <section class="secao">
-        <h2>💳 FORMA DE PAGAMENTO</h2>
 
-        <div class="opcoes-pagamento">
-          <!-- ======================== PIX ======================== -->
-          <label class="opcao-pagamento selecionada">
-            <!--
-                        O atributo checked faz o Pix
-                        começar selecionado.
-                    -->
-            <input type="radio" name="pagamento" value="Pix" checked />
+        <section class="secao">
 
-            <span class="icone-pagamento">◆</span>
+            <h2>💳 FORMA DE PAGAMENTO</h2>
 
-            <strong>Pix</strong>
+            <div class="opcoes-pagamento">
 
-            <!-- Círculo visual -->
-            <span class="radio"></span>
-          </label>
 
-          <!-- ================= CARTÃO DE CRÉDITO ================= -->
-          <label class="opcao-pagamento">
-            <input type="radio" name="pagamento" value="Cartão de crédito" />
+                <!-- ======================== PIX ======================== -->
 
-            <span class="icone-pagamento">▣</span>
+                <label class="opcao-pagamento selecionada">
 
-            <strong>Cartão de crédito</strong>
+                    <input
+                        type="radio"
+                        name="pagamento"
+                        value="Pix"
+                        checked
+                    >
 
-            <span class="radio"></span>
-          </label>
+                    <span class="icone-pagamento">◆</span>
 
-          <!-- ================= CARTÃO DE DÉBITO ================= -->
-          <label class="opcao-pagamento">
-            <input type="radio" name="pagamento" value="Cartão de débito" />
+                    <strong>Pix</strong>
 
-            <span class="icone-pagamento">▣</span>
+                    <span class="radio"></span>
 
-            <strong>Cartão de débito</strong>
+                </label>
 
-            <span class="radio"></span>
-          </label>
 
-          <!-- ======================= DINHEIRO ======================= -->
-          <label class="opcao-pagamento">
-            <input type="radio" name="pagamento" value="Dinheiro" />
+                <!-- ================= CARTÃO DE CRÉDITO ================= -->
 
-            <span class="icone-pagamento">▤</span>
+                <label class="opcao-pagamento">
 
-            <strong>Dinheiro</strong>
+                    <input
+                        type="radio"
+                        name="pagamento"
+                        value="Cartão de crédito"
+                    >
 
-            <span class="radio"></span>
-          </label>
-        </div>
-      </section>
+                    <span class="icone-pagamento">▣</span>
 
-      <!-- =====================================================
+                    <strong>Cartão de crédito</strong>
+
+                    <span class="radio"></span>
+
+                </label>
+
+
+                <!-- ================= CARTÃO DE DÉBITO ================= -->
+
+                <label class="opcao-pagamento">
+
+                    <input
+                        type="radio"
+                        name="pagamento"
+                        value="Cartão de débito"
+                    >
+
+                    <span class="icone-pagamento">▣</span>
+
+                    <strong>Cartão de débito</strong>
+
+                    <span class="radio"></span>
+
+                </label>
+
+
+                <!-- ======================= DINHEIRO ======================= -->
+
+                <label class="opcao-pagamento">
+
+                    <input
+                        type="radio"
+                        name="pagamento"
+                        value="Dinheiro"
+                    >
+
+                    <span class="icone-pagamento">▤</span>
+
+                    <strong>Dinheiro</strong>
+
+                    <span class="radio"></span>
+
+                </label>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
              RESUMO DO PEDIDO
              ===================================================== -->
-      <div class="resumo">
-        <!-- Subtotal -->
-        <p>
-          Subtotal
 
-          <span id="subtotal"> R$ 0,00 </span>
-        </p>
+        <div class="resumo">
 
-        <!-- Taxa de entrega -->
-        <p>
-          Taxa de entrega
+            <!-- Subtotal -->
 
-          <span id="taxa"> R$ 0,00 </span>
-        </p>
+            <p>
+                Subtotal
+                <span id="subtotal">R$ 0,00</span>
+            </p>
 
-        <hr />
 
-        <!-- Total -->
-        <h3>
-          TOTAL
+            <!-- Taxa de entrega -->
 
-          <span id="total"> R$ 0,00 </span>
-        </h3>
-      </div>
+            <p>
+                Taxa de entrega
+                <span id="taxa">R$ 0,00</span>
+            </p>
 
-      <!-- =====================================================
+
+            <hr>
+
+
+            <!-- Total -->
+
+            <h3>
+                TOTAL
+                <span id="total">R$ 0,00</span>
+            </h3>
+
+        </div>
+
+
+        <!-- =====================================================
              BOTÃO CONTINUAR
              ===================================================== -->
-      <button type="button" class="continuar" onclick="finalizarPedido()">
-        CONTINUAR
-      </button>
+
+        <button
+            type="button"
+            class="continuar"
+            onclick="finalizarPedido()"
+        >
+            CONTINUAR
+        </button>
+
     </main>
+
 
     <!-- =====================================================
          JAVASCRIPT
-         
+
          IMPORTANTE:
          config.js vem PRIMEIRO porque cria o objeto CONFIG.
-         
          app.js vem DEPOIS porque utiliza CONFIG.
          ===================================================== -->
 
-    <script src="/javascript/config.js"></script>
-    <script src="/javascript/app.js"></script>
-  </body>
+    <script src="./javascript/config.js"></script>
+    <script src="./javascript/app.js"></script>
+
+</body>
+
 </html>
-```
