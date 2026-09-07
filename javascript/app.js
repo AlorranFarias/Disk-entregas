@@ -1,12 +1,17 @@
+
+// ========================================
+// QUANTIDADES
+// ========================================
+
 const quantidades = {
     agua: 0,
     gas: 0
 };
 
 
-// =====================================================
-// FORMATAR DINHEIRO
-// =====================================================
+// ========================================
+// FORMATAR MOEDA
+// ========================================
 
 function formatarMoeda(valor) {
     return valor.toLocaleString("pt-BR", {
@@ -16,97 +21,92 @@ function formatarMoeda(valor) {
 }
 
 
-// =====================================================
+// ========================================
 // ALTERAR QUANTIDADE
-// =====================================================
+// ========================================
 
-function alterarQuantidade(produtoId, valor) {
+function alterarQuantidade(produto, quantidade) {
 
-    if (!(produtoId in quantidades)) {
+    if (!quantidades.hasOwnProperty(produto)) {
         return;
     }
 
-    quantidades[produtoId] += valor;
+    quantidades[produto] += quantidade;
 
-    if (quantidades[produtoId] < 0) {
-        quantidades[produtoId] = 0;
+    // Nunca permitir quantidade negativa
+    if (quantidades[produto] < 0) {
+        quantidades[produto] = 0;
     }
 
-    const elementoQuantidade =
-        document.getElementById(`quantidade-${produtoId}`);
+    const elemento = document.getElementById(
+        `quantidade-${produto}`
+    );
 
-    if (elementoQuantidade) {
-        elementoQuantidade.textContent =
-            quantidades[produtoId];
+    if (elemento) {
+        elemento.textContent = quantidades[produto];
     }
 
     atualizarTotal();
+    atualizarAvisoEntrega();
 }
 
 
-// =====================================================
-// PEGAR PREÇO
-// =====================================================
+// ========================================
+// PEGAR PREÇO DO PRODUTO
+// ========================================
 
 function obterPreco(produtoId) {
 
     const produto = CONFIG.produtos.find(
-        item => item.id === produtoId
+        produto => produto.id === produtoId
     );
 
     return produto ? produto.preco : 0;
 }
 
 
-// =====================================================
-// PEGAR LOCAL
-// =====================================================
+// ========================================
+// PEGAR LOCAL SELECIONADO
+// ========================================
 
 function obterLocalSelecionado() {
 
-    return document.querySelector(
+    const local = document.querySelector(
         'input[name="local"]:checked'
     );
+
+    return local ? local.value : null;
 }
 
 
-// =====================================================
-// PEGAR PAGAMENTO
-// =====================================================
+// ========================================
+// PEGAR PAGAMENTO SELECIONADO
+// ========================================
 
 function obterPagamentoSelecionado() {
 
-    return document.querySelector(
+    const pagamento = document.querySelector(
         'input[name="pagamento"]:checked'
     );
+
+    return pagamento ? pagamento.value : null;
 }
 
 
-// =====================================================
+// ========================================
 // ATUALIZAR TOTAL
-// =====================================================
+// ========================================
 
 function atualizarTotal() {
 
-    const valorAgua =
+    const totalAgua =
         quantidades.agua * obterPreco("agua");
 
-    const valorGas =
+    const totalGas =
         quantidades.gas * obterPreco("gas");
 
-    const subtotal =
-        valorAgua + valorGas;
-
-    // Sem taxa de entrega
-    const total = subtotal;
-
-    const elementoSubtotal =
-        document.getElementById("subtotal");
-
-    if (elementoSubtotal) {
-        elementoSubtotal.textContent =
-            formatarMoeda(subtotal);
-    }
+    const total =
+        totalAgua + totalGas;
 
     const elementoTotal =
         document.getElementById("total");
@@ -118,50 +118,44 @@ function atualizarTotal() {
 }
 
 
-// =====================================================
-// ATUALIZAR VISUAL DAS OPÇÕES
-// =====================================================
+// ========================================
+// ATUALIZAR SELEÇÃO VISUAL
+// ========================================
 
-function atualizarSelecaoVisual(tipo) {
+function atualizarSelecaoVisual(
+    nomeInput,
+    classe
+) {
 
-    let opcoes = [];
+    const opcoes = document.querySelectorAll(
+        `input[name="${nomeInput}"]`
+    );
 
-    if (tipo === "local") {
-        opcoes =
-            document.querySelectorAll(
-                ".opcao-entrega"
-            );
-    }
+    opcoes.forEach(input => {
 
-    if (tipo === "pagamento") {
-        opcoes =
-            document.querySelectorAll(
-                ".opcao-pagamento"
-            );
-    }
+        const label = input.closest(`.${classe}`);
 
-    opcoes.forEach(opcao => {
-
-        const input =
-            opcao.querySelector("input");
-
-        if (input && input.checked) {
-            opcao.classList.add("selecionada");
-        } else {
-            opcao.classList.remove("selecionada");
+        if (!label) {
+            return;
         }
+
+        if (input.checked) {
+            label.classList.add("selecionada");
+        } else {
+            label.classList.remove("selecionada");
+        }
+
     });
 }
 
 
-// =====================================================
-// AVISO RIACHÃO DE CIMA
-// =====================================================
+// ========================================
+// ATUALIZAR AVISO RIACHÃO DE CIMA
+// ========================================
 
 function atualizarAvisoEntrega() {
 
-    const localSelecionado =
-        obterLocalSelecionado();
+    const local = obterLocalSelecionado();
 
     const aviso =
         document.getElementById(
@@ -173,19 +167,23 @@ function atualizarAvisoEntrega() {
     }
 
     if (
-        localSelecionado &&
-        localSelecionado.value === "Riachão de Cima"
+        local === "Riachão de Cima" &&
+        quantidades.agua < 2
     ) {
+
         aviso.style.display = "block";
+
     } else {
+
         aviso.style.display = "none";
+
     }
 }
 
 
-// =====================================================
-// CONFIGURAR RADIOS
-// =====================================================
+// ========================================
+// CONFIGURAR SELEÇÕES
+// ========================================
 
 function configurarSelecoes() {
 
@@ -198,12 +196,17 @@ function configurarSelecoes() {
 
         input.addEventListener(
             "change",
-            function () {
+            () => {
 
-                atualizarSelecaoVisual("local");
+                atualizarSelecaoVisual(
+                    "local",
+                    "opcao-entrega"
+                );
+
                 atualizarAvisoEntrega();
             }
         );
+
     });
 
 
@@ -216,31 +219,62 @@ function configurarSelecoes() {
 
         input.addEventListener(
             "change",
-            function () {
+            () => {
 
                 atualizarSelecaoVisual(
-                    "pagamento"
+                    "pagamento",
+                    "opcao-pagamento"
                 );
             }
         );
+
     });
 
 
-    atualizarSelecaoVisual("local");
-    atualizarSelecaoVisual("pagamento");
+    atualizarSelecaoVisual(
+        "local",
+        "opcao-entrega"
+    );
+
+
+    atualizarSelecaoVisual(
+        "pagamento",
+        "opcao-pagamento"
+    );
+
+
     atualizarAvisoEntrega();
 }
 
 
-// =====================================================
+// ========================================
+// MOSTRAR ANIMAÇÃO DE SUCESSO
+// ========================================
+
+function mostrarAnimacaoSucesso() {
+
+    const modal =
+        document.getElementById(
+            "sucesso-modal"
+        );
+
+    if (!modal) {
+        return;
+    }
+
+    modal.classList.add("ativo");
+}
+
+
+// ========================================
 // FINALIZAR PEDIDO
-// =====================================================
+// ========================================
 
 function finalizarPedido() {
 
-    // -------------------------------------------------
-    // VERIFICAR PRODUTOS
-    // -------------------------------------------------
+    // ------------------------------------
+    // PRODUTOS
+    // ------------------------------------
 
     if (
         quantidades.agua === 0 &&
@@ -248,50 +282,50 @@ function finalizarPedido() {
     ) {
 
         alert(
-            "Escolha pelo menos um produto."
+            "Selecione pelo menos um produto."
         );
 
         return;
     }
 
 
-    // -------------------------------------------------
-    // PEGAR LOCAL
-    // -------------------------------------------------
+    // ------------------------------------
+    // LOCAL
+    // ------------------------------------
 
-    const localSelecionado =
+    const local =
         obterLocalSelecionado();
 
-    if (!localSelecionado) {
+    if (!local) {
 
         alert(
-            "Escolha o local de entrega."
+            "Selecione o local de entrega."
         );
 
         return;
     }
 
 
-    // -------------------------------------------------
-    // REGRA DE RIACHÃO DE CIMA
-    // -------------------------------------------------
+    // ------------------------------------
+    // REGRA RIACHÃO DE CIMA
+    // ------------------------------------
 
     if (
-        localSelecionado.value === "Riachão de Cima" &&
+        local === "Riachão de Cima" &&
         quantidades.agua < 2
     ) {
 
         alert(
-            "Para Riachão de Cima, o pedido mínimo é de 2 águas."
+            "Para Riachão de Cima, o pedido deve ter no mínimo 2 águas."
         );
 
         return;
     }
 
 
-    // -------------------------------------------------
+    // ------------------------------------
     // DADOS DO CLIENTE
-    // -------------------------------------------------
+    // ------------------------------------
 
     const nome =
         document
@@ -299,15 +333,15 @@ function finalizarPedido() {
             .value
             .trim();
 
-    const referencia =
-        document
-            .getElementById("referencia")
-            .value
-            .trim();
-
     const whatsapp =
         document
             .getElementById("whatsapp")
+            .value
+            .trim();
+
+    const referencia =
+        document
+            .getElementById("referencia")
             .value
             .trim();
 
@@ -318,159 +352,194 @@ function finalizarPedido() {
             .trim();
 
 
-    // -------------------------------------------------
-    // VALIDAR NOME
-    // -------------------------------------------------
+    // ------------------------------------
+    // NOME
+    // ------------------------------------
 
     if (!nome) {
 
         alert(
-            "Informe seu nome ou apelido."
+            "Digite seu nome ou apelido."
         );
 
         return;
     }
 
 
-    // -------------------------------------------------
-    // VALIDAR WHATSAPP
-    // -------------------------------------------------
+    // ------------------------------------
+    // WHATSAPP
+    // ------------------------------------
 
     if (!whatsapp) {
 
         alert(
-            "Informe seu WhatsApp."
+            "Digite seu WhatsApp."
         );
 
         return;
     }
 
 
-    // -------------------------------------------------
+    // ------------------------------------
     // PAGAMENTO
-    // -------------------------------------------------
+    // ------------------------------------
 
-    const pagamentoSelecionado =
+    const pagamento =
         obterPagamentoSelecionado();
 
-    if (!pagamentoSelecionado) {
+    if (!pagamento) {
 
         alert(
-            "Escolha uma forma de pagamento."
+            "Selecione uma forma de pagamento."
         );
 
         return;
     }
 
 
-    // -------------------------------------------------
-    // CALCULAR TOTAL
-    // -------------------------------------------------
-
-    const subtotal =
-        (
-            quantidades.agua *
-            obterPreco("agua")
-        ) +
-        (
-            quantidades.gas *
-            obterPreco("gas")
-        );
-
-    const total = subtotal;
+    // ====================================
+    // DAQUI PARA BAIXO:
+    // TUDO ESTÁ CORRETO
+    // ====================================
 
 
-    // -------------------------------------------------
-    // MONTAR MENSAGEM
-    // -------------------------------------------------
+    const totalAgua =
+        quantidades.agua *
+        obterPreco("agua");
+
+    const totalGas =
+        quantidades.gas *
+        obterPreco("gas");
+
+    const total =
+        totalAgua + totalGas;
+
+
+    // ------------------------------------
+    // MONTAR PEDIDO
+    // ------------------------------------
 
     let mensagem =
-        "🛒 *NOVO PEDIDO*\n\n";
+        "🛵 *NOVO PEDIDO - DISK ENTREGAS*%0A%0A";
+
 
     mensagem +=
-        "📦 *Produtos:*\n";
+        "🛒 *PEDIDO:*%0A";
+
 
     if (quantidades.agua > 0) {
 
         mensagem +=
-            `💧 Água Mineral 20L: ${quantidades.agua}\n`;
+            `💧 Água Mineral 20L: ${quantidades.agua}x%0A`;
+
     }
+
 
     if (quantidades.gas > 0) {
 
         mensagem +=
-            `🔥 Gás P13: ${quantidades.gas}\n`;
+            `🔥 Gás P13: ${quantidades.gas}x%0A`;
+
     }
 
-    mensagem +=
-        `\n📍 *Local:* ${localSelecionado.value}\n`;
 
     mensagem +=
-        `💰 *Pagamento:* ${pagamentoSelecionado.value}\n`;
+        `%0A📍 *LOCAL:* ${local}%0A`;
+
 
     mensagem +=
-        `💵 *TOTAL:* ${formatarMoeda(total)}\n\n`;
+        `💳 *PAGAMENTO:* ${pagamento}%0A`;
+
 
     mensagem +=
-        `👤 *Cliente:* ${nome}\n`;
+        `💰 *TOTAL:* ${formatarMoeda(total)}%0A`;
+
 
     mensagem +=
-        `📱 *WhatsApp:* ${whatsapp}\n`;
+        `%0A👤 *CLIENTE:* ${nome}%0A`;
+
+
+    mensagem +=
+        `📱 *WHATSAPP:* ${whatsapp}%0A`;
+
 
     if (referencia) {
 
         mensagem +=
-            `📌 *Referência:* ${referencia}\n`;
+            `📍 *REFERÊNCIA:* ${referencia}%0A`;
+
     }
+
 
     if (observacao) {
 
         mensagem +=
-            `📝 *Observação:* ${observacao}\n`;
+            `📝 *OBSERVAÇÃO:* ${observacao}%0A`;
+
     }
 
 
-    // -------------------------------------------------
-    // VERIFICAR WHATSAPP DO DONO
-    // -------------------------------------------------
+    // ------------------------------------
+    // VERIFICAR NÚMERO DO DONO
+    // ------------------------------------
 
     if (
         !CONFIG.whatsappDono ||
-        CONFIG.whatsappDono === "SEU_NUMERO_AQUI"
+        CONFIG.whatsappDono ===
+        "SEU_NUMERO_AQUI"
     ) {
 
         alert(
-            "Configure o número do WhatsApp do dono no arquivo config.js."
+            "O número do WhatsApp do dono ainda não foi configurado."
         );
 
         return;
     }
 
 
-    // -------------------------------------------------
-    // ABRIR WHATSAPP
-    // -------------------------------------------------
+    // ------------------------------------
+    // URL DO WHATSAPP
+    // ------------------------------------
 
     const url =
-        `https://wa.me/${CONFIG.whatsappDono}?text=${encodeURIComponent(mensagem)}`;
+        `https://wa.me/${CONFIG.whatsappDono}?text=${mensagem}`;
 
-    window.open(
-        url,
-        "_blank"
-    );
+
+    // ====================================
+    // TUDO CERTO!
+    // MOSTRA A ANIMAÇÃO
+    // ====================================
+
+    mostrarAnimacaoSucesso();
+
+
+    // ------------------------------------
+    // ABRIR WHATSAPP
+    // ------------------------------------
+
+    setTimeout(() => {
+
+        window.open(
+            url,
+            "_blank"
+        );
+
+    }, 1800);
+
 }
 
 
-// =====================================================
-// INICIAR SITE
-// =====================================================
+// ========================================
+// INICIALIZAÇÃO
+// ========================================
 
 document.addEventListener(
     "DOMContentLoaded",
-    function () {
+    () => {
+
+        atualizarTotal();
 
         configurarSelecoes();
-        atualizarTotal();
 
     }
 );
