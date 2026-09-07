@@ -14,12 +14,10 @@ const CONFIG = {
 
     locais: [
         {
-            nome: "Riachão",
-            taxa: 0
+            nome: "Riachão"
         },
         {
-            nome: "Riachão de Cima",
-            taxa: 5
+            nome: "Riachão de Cima"
         }
     ],
 
