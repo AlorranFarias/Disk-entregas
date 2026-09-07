@@ -23,7 +23,6 @@
 
     <!-- =====================================================
          CONTAINER PRINCIPAL
-         Todo o conteúdo da página fica aqui dentro.
          ===================================================== -->
 
     <main class="container">
@@ -33,17 +32,18 @@
              ===================================================== -->
 
         <header>
+
             <!-- Nome da empresa -->
             <h1>ÁGUA & GÁS</h1>
 
             <!-- Descrição da empresa -->
             <p>Peça sua água ou gás de forma rápida e fácil.</p>
+
         </header>
 
 
         <!-- =====================================================
              PRODUTOS
-             Aqui o cliente escolhe a quantidade de água e gás.
              ===================================================== -->
 
         <section>
@@ -63,9 +63,13 @@
 
                 <!-- Informações da água -->
                 <div class="produto-info">
+
                     <strong>Água Mineral 20L</strong>
+
                     <b class="agua">R$ 6,50</b>
+
                 </div>
+
 
                 <!-- Controle de quantidade -->
                 <div class="controle agua-bg">
@@ -78,8 +82,10 @@
                         −
                     </button>
 
+
                     <!-- Quantidade atual -->
                     <span id="quantidade-agua">0</span>
+
 
                     <!-- Aumentar quantidade -->
                     <button
@@ -104,11 +110,16 @@
                     alt="Botijão de gás"
                 >
 
+
                 <!-- Informações do gás -->
                 <div class="produto-info">
+
                     <strong>Gás</strong>
+
                     <b class="gas">R$ 125,00</b>
+
                 </div>
+
 
                 <!-- Controle de quantidade -->
                 <div class="controle gas-bg">
@@ -121,8 +132,10 @@
                         −
                     </button>
 
+
                     <!-- Quantidade atual -->
                     <span id="quantidade-gas">0</span>
+
 
                     <!-- Aumentar quantidade -->
                     <button
@@ -147,28 +160,56 @@
 
             <h2>SEUS DADOS</h2>
 
-            <!-- Nome/apelido -->
+
+            <!-- =================================================
+                 NOME / APELIDO
+
+                 required = campo obrigatório
+                 ================================================= -->
+
             <input
                 id="nome"
                 type="text"
                 placeholder="Nome/apelido *"
+                required
             >
 
-            <!-- WhatsApp -->
+
+            <!-- =================================================
+                 WHATSAPP
+
+                 required = campo obrigatório
+                 ================================================= -->
+
             <input
                 id="whatsapp"
                 type="tel"
                 placeholder="WhatsApp *"
+                required
             >
 
-            <!-- Ponto de referência -->
+
+            <!-- =================================================
+                 PONTO DE REFERÊNCIA
+
+                 NÃO possui required.
+                 Portanto, é opcional.
+                 ================================================= -->
+
             <input
                 id="referencia"
                 type="text"
                 placeholder="Ponto de referência"
             >
 
-            <!-- Observação opcional -->
+
+            <!-- =================================================
+                 OBSERVAÇÃO
+
+                 NÃO possui required.
+                 Portanto, é opcional.
+                 ================================================= -->
+
             <textarea
                 id="observacao"
                 placeholder="Observação (opcional)"
@@ -184,6 +225,7 @@
         <section class="secao">
 
             <h2>📍 LOCAL DE ENTREGA:</h2>
+
 
             <div class="opcoes-entrega">
 
@@ -246,6 +288,7 @@
         <section class="secao">
 
             <h2>💳 FORMA DE PAGAMENTO</h2>
+
 
             <div class="opcoes-pagamento">
 
@@ -336,36 +379,12 @@
              ===================================================== -->
 
         <div class="resumo">
-
-            <!-- Subtotal -->
-
-            <p>
-                Subtotal
-                <span id="subtotal">R$ 0,00</span>
-            </p>
-
-
-            <!-- Taxa de entrega -->
-
-            <p>
-                Taxa de entrega
-                <span id="taxa">R$ 0,00</span>
-            </p>
-
-
-            <hr>
-
-
-            <!-- Total -->
-
-            <h3>
-                TOTAL
-                <span id="total">R$ 0,00</span>
-            </h3>
-
-        </div>
-
-
+    <h3>
+        TOTAL
+        <span id="total">R$ 0,00</span>
+    </h3>
+    
+</div>
         <!-- =====================================================
              BOTÃO CONTINUAR
              ===================================================== -->
@@ -385,11 +404,12 @@
          JAVASCRIPT
 
          IMPORTANTE:
-         config.js vem PRIMEIRO porque cria o objeto CONFIG.
-         app.js vem DEPOIS porque utiliza CONFIG.
+         config.js vem PRIMEIRO.
+         app.js vem DEPOIS.
          ===================================================== -->
 
     <script src="./javascript/config.js"></script>
+
     <script src="./javascript/app.js"></script>
 
 </body>
