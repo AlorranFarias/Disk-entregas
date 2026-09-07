@@ -2,6 +2,7 @@
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>Disk Entregas - Água e Gás</title>
@@ -10,21 +11,29 @@
   </head>
 
   <body>
+    <!-- =========================================
+         CONTEÚDO PRINCIPAL
+         ========================================= -->
+
     <main class="container">
       <!-- CABEÇALHO -->
       <header class="header">
         <h1>🛵 Disk Entregas</h1>
+
         <p>Água e Gás na sua casa</p>
       </header>
 
-      <!-- PRODUTOS -->
+      <!-- =========================================
+             PRODUTOS
+             ========================================= -->
+
       <section class="secao">
         <h2>🛒 ESCOLHA SEU PRODUTO</h2>
 
         <div class="produtos">
           <!-- ÁGUA -->
           <div class="produto agua">
-            <img src="./image/agua.webp" alt="Água Mineral 20L">
+            <img src="./image/agua.webp" alt="Água Mineral 20L" />
 
             <div class="produto-info">
               <h3>💧 Água Mineral 20L</h3>
@@ -32,13 +41,21 @@
               <p class="preco">R$ 6,50</p>
 
               <div class="quantidade">
-                <button type="button" onclick="alterarQuantidade('agua', -1)">
+                <button
+                  type="button"
+                  onclick="alterarQuantidade('agua', -1)"
+                  aria-label="Diminuir quantidade de água"
+                >
                   −
                 </button>
 
-                <span id="quantidade-agua">0</span>
+                <span id="quantidade-agua"> 0 </span>
 
-                <button type="button" onclick="alterarQuantidade('agua', 1)">
+                <button
+                  type="button"
+                  onclick="alterarQuantidade('agua', 1)"
+                  aria-label="Aumentar quantidade de água"
+                >
                   +
                 </button>
               </div>
@@ -47,21 +64,29 @@
 
           <!-- GÁS -->
           <div class="produto gas">
-            <img src="./image/gas.webp" alt="Gás P13">
+            <img src="./image/gas.webp" alt="Gás P13" />
 
             <div class="produto-info">
-              <h3>🔥 Gás </h3>
+              <h3>🔥 Gás P13</h3>
 
               <p class="preco">R$ 125,00</p>
 
               <div class="quantidade">
-                <button type="button" onclick="alterarQuantidade('gas', -1)">
+                <button
+                  type="button"
+                  onclick="alterarQuantidade('gas', -1)"
+                  aria-label="Diminuir quantidade de gás"
+                >
                   −
                 </button>
 
-                <span id="quantidade-gas">0</span>
+                <span id="quantidade-gas"> 0 </span>
 
-                <button type="button" onclick="alterarQuantidade('gas', 1)">
+                <button
+                  type="button"
+                  onclick="alterarQuantidade('gas', 1)"
+                  aria-label="Aumentar quantidade de gás"
+                >
                   +
                 </button>
               </div>
@@ -70,49 +95,71 @@
         </div>
       </section>
 
-      <!-- LOCAL DE ENTREGA -->
+      <!-- =========================================
+             LOCAL DE ENTREGA
+             ========================================= -->
+
       <section class="secao">
         <h2>📍 LOCAL DE ENTREGA</h2>
 
         <div class="opcoes-entrega">
+          <!-- RIACHÃO -->
           <label class="opcao-entrega selecionada">
             <input type="radio" name="local" value="Riachão" checked />
 
-            <span class="icone-local">📍</span>
+            <span class="icone-local"> 📍 </span>
 
-            <strong>Riachão</strong>
+            <strong> Riachão </strong>
           </label>
 
+          <!-- RIACHÃO DE CIMA -->
           <label class="opcao-entrega">
             <input type="radio" name="local" value="Riachão de Cima" />
 
-            <span class="icone-local">📍</span>
+            <span class="icone-local"> 📍 </span>
 
-            <strong>Riachão de Cima</strong>
+            <strong> Riachão de Cima </strong>
           </label>
         </div>
 
+        <!-- AVISO -->
         <div id="aviso-riachao-cima" class="aviso-entrega">
           ⚠ Riachão de Cima: mínimo de 2 águas.
         </div>
       </section>
 
-      <!-- DADOS DO CLIENTE -->
+      <!-- =========================================
+             DADOS DO CLIENTE
+             ========================================= -->
+
       <section class="secao">
         <h2>👤 SEUS DADOS</h2>
 
+        <!-- NOME -->
         <div class="campo">
           <label for="nome"> Nome ou apelido * </label>
 
-          <input type="text" id="nome" placeholder="Ex: João" />
+          <input
+            type="text"
+            id="nome"
+            placeholder="Ex: João"
+            autocomplete="name"
+          />
         </div>
 
+        <!-- WHATSAPP -->
         <div class="campo">
           <label for="whatsapp"> WhatsApp * </label>
 
-          <input type="tel" id="whatsapp" placeholder="Ex: (85) 99999-9999" />
+          <input
+            type="tel"
+            id="whatsapp"
+            placeholder="Ex: (85) 99999-9999"
+            autocomplete="tel"
+          />
         </div>
 
+        <!-- REFERÊNCIA -->
         <div class="campo">
           <label for="referencia"> Ponto de referência </label>
 
@@ -123,6 +170,7 @@
           />
         </div>
 
+        <!-- OBSERVAÇÃO -->
         <div class="campo">
           <label for="observacao"> Observação </label>
 
@@ -134,83 +182,107 @@
         </div>
       </section>
 
-      <!-- PAGAMENTO -->
+      <!-- =========================================
+             FORMA DE PAGAMENTO
+             ========================================= -->
+
       <section class="secao">
         <h2>💳 FORMA DE PAGAMENTO</h2>
 
         <div class="opcoes-pagamento">
+          <!-- PIX -->
           <label class="opcao-pagamento">
             <input type="radio" name="pagamento" value="Pix" />
 
-            <span>💠</span>
+            <span> 💠 </span>
 
-            <strong>Pix</strong>
+            <strong> Pix </strong>
           </label>
 
+          <!-- CRÉDITO -->
           <label class="opcao-pagamento">
             <input type="radio" name="pagamento" value="Cartão de crédito" />
 
-            <span>💳</span>
+            <span> 💳 </span>
 
-            <strong>Crédito</strong>
+            <strong> Crédito </strong>
           </label>
 
+          <!-- DÉBITO -->
           <label class="opcao-pagamento">
             <input type="radio" name="pagamento" value="Cartão de débito" />
 
-            <span>💳</span>
+            <span> 💳 </span>
 
-            <strong>Débito</strong>
+            <strong> Débito </strong>
           </label>
 
+          <!-- DINHEIRO -->
           <label class="opcao-pagamento">
             <input type="radio" name="pagamento" value="Dinheiro" />
 
-            <span>💵</span>
+            <span> 💵 </span>
 
-            <strong>Dinheiro</strong>
+            <strong> Dinheiro </strong>
           </label>
         </div>
       </section>
 
-      <!-- TOTAL -->
+      <!-- =========================================
+             TOTAL
+             ========================================= -->
+
       <section class="resumo">
         <h3>
-          TOTAL
+          <span> TOTAL </span>
 
           <span id="total"> R$ 0,00 </span>
         </h3>
       </section>
 
-      <!-- FINALIZAR -->
+      <!-- =========================================
+             BOTÃO FINALIZAR
+             ========================================= -->
+
       <button type="button" class="continuar" onclick="finalizarPedido()">
         FINALIZAR PEDIDO
       </button>
     </main>
 
     <!-- =========================================
-         MODAL DE PEDIDO REALIZADO
+         MODAL DE SUCESSO
+
+         IMPORTANTE:
+         Fica FORA do main/container para funcionar
+         como uma tela sobreposta.
          ========================================= -->
 
     <div id="sucesso-modal" class="sucesso-modal">
       <div class="sucesso-box">
+        <!-- CÍRCULO -->
         <div class="check-circle">
-          <svg class="check" viewBox="0 0 52 52">
+          <svg class="check" viewBox="0 0 52 52" aria-hidden="true">
             <path d="M14 27 L22 35 L39 17"></path>
           </svg>
         </div>
 
+        <!-- TÍTULO -->
         <h2>Pedido realizado!</h2>
 
+        <!-- MENSAGEM -->
         <p>Seu pedido foi registrado com sucesso.</p>
 
+        <!-- STATUS -->
         <small> Enviando para o WhatsApp... </small>
       </div>
     </div>
 
-    <!-- JAVASCRIPT -->
+    <!-- =========================================
+         JAVASCRIPT
+         ========================================= -->
 
     <script src="./javascript/config.js"></script>
+
     <script src="./javascript/app.js"></script>
   </body>
 </html>
