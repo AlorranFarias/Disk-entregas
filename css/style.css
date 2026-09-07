@@ -1,7 +1,7 @@
 
-/* ================================
+/* ========================================
    RESET
-================================ */
+======================================== */
 
 * {
     margin: 0;
@@ -9,6 +9,10 @@
     box-sizing: border-box;
 }
 
+
+/* ========================================
+   BODY
+======================================== */
 
 body {
     font-family: Arial, Helvetica, sans-serif;
@@ -18,9 +22,9 @@ body {
 }
 
 
-/* ================================
+/* ========================================
    CONTAINER
-================================ */
+======================================== */
 
 .container {
     width: 100%;
@@ -30,23 +34,30 @@ body {
 }
 
 
-/* ================================
-   HEADER
-================================ */
+/* ========================================
+   CABEÇALHO
+======================================== */
 
 .header {
     text-align: center;
-    background: white;
+    background: #fff;
+
     padding: 25px 20px;
+
     border-radius: 18px;
+
     margin-bottom: 20px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+
+    box-shadow:
+        0 4px 15px rgba(0, 0, 0, 0.06);
 }
+
 
 .header h1 {
     font-size: 30px;
     margin-bottom: 8px;
 }
+
 
 .header p {
     color: #666;
@@ -54,79 +65,102 @@ body {
 }
 
 
-/* ================================
+/* ========================================
    SEÇÕES
-================================ */
+======================================== */
 
 .secao {
-    background: white;
+    background: #fff;
+
     padding: 20px;
+
     border-radius: 18px;
+
     margin-bottom: 18px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+
+    box-shadow:
+        0 4px 15px rgba(0, 0, 0, 0.06);
 }
+
 
 .secao h2 {
     font-size: 18px;
+
     margin-bottom: 18px;
 }
 
 
-/* ================================
+/* ========================================
    PRODUTOS
-================================ */
+======================================== */
 
 .produtos {
     display: grid;
+
     grid-template-columns: 1fr 1fr;
+
     gap: 15px;
 }
 
 
 .produto {
     border: 2px solid #eee;
+
     border-radius: 16px;
+
     padding: 15px;
+
     text-align: center;
+
     transition: 0.2s;
 }
 
 
 .produto:hover {
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.08);
 }
 
 
 .produto img {
     width: 130px;
     height: 130px;
+
     object-fit: contain;
+
     margin-bottom: 10px;
 }
 
 
 .produto-info h3 {
     font-size: 16px;
+
     margin-bottom: 8px;
 }
 
 
 .preco {
     font-size: 20px;
+
     font-weight: bold;
+
     margin-bottom: 12px;
 }
 
 
-/* ================================
+/* ========================================
    QUANTIDADE
-================================ */
+======================================== */
 
 .quantidade {
     display: flex;
+
     align-items: center;
+
     justify-content: center;
+
     gap: 15px;
 }
 
@@ -134,12 +168,26 @@ body {
 .quantidade button {
     width: 38px;
     height: 38px;
+
     border: none;
+
     border-radius: 50%;
+
     background: #111;
-    color: white;
+
+    color: #fff;
+
     font-size: 24px;
+
     cursor: pointer;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    transition: 0.2s;
 }
 
 
@@ -148,32 +196,52 @@ body {
 }
 
 
-.quantidade span {
-    font-size: 20px;
-    font-weight: bold;
-    min-width: 25px;
+.quantidade button:active {
+    transform: scale(0.92);
 }
 
 
-/* ================================
+.quantidade span {
+    font-size: 20px;
+
+    font-weight: bold;
+
+    min-width: 25px;
+
+    text-align: center;
+}
+
+
+/* ========================================
    LOCAL DE ENTREGA
-================================ */
+======================================== */
 
 .opcoes-entrega {
     display: grid;
+
     grid-template-columns: 1fr 1fr;
+
     gap: 12px;
 }
 
 
 .opcao-entrega {
     border: 2px solid #eee;
+
     border-radius: 12px;
+
     padding: 15px;
+
     cursor: pointer;
+
     display: flex;
+
     align-items: center;
+
+    justify-content: center;
+
     gap: 8px;
+
     transition: 0.2s;
 }
 
@@ -184,30 +252,51 @@ body {
 
 
 .opcao-entrega.selecionada {
-    border-color: #111;
-    background: #f5f5f5;
+    border-color: #006c2f;
+
+    background: #006c2f;
+
+    color: #fff;
 }
 
 
 .icone-local {
     font-size: 20px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    line-height: 1;
 }
 
 
+/* ========================================
+   AVISO RIACHÃO DE CIMA
+======================================== */
+
 .aviso-entrega {
     display: none;
+
     margin-top: 12px;
+
     padding: 12px;
+
     border-radius: 10px;
+
     background: #fff4d6;
+
     color: #765600;
+
     font-size: 14px;
 }
 
 
-/* ================================
-   CAMPOS
-================================ */
+/* ========================================
+   CAMPOS DO CLIENTE
+======================================== */
 
 .campo {
     margin-bottom: 15px;
@@ -221,8 +310,11 @@ body {
 
 .campo label {
     display: block;
+
     margin-bottom: 7px;
+
     font-weight: bold;
+
     font-size: 14px;
 }
 
@@ -230,41 +322,54 @@ body {
 .campo input,
 .campo textarea {
     width: 100%;
+
     padding: 13px;
+
     border: 2px solid #e5e5e5;
+
     border-radius: 10px;
+
     font-size: 15px;
+
     font-family: inherit;
+
     outline: none;
+
     transition: 0.2s;
+
+    background: #fff;
 }
 
 
 .campo input:focus,
 .campo textarea:focus {
-    border-color: #111;
+    border-color: #006c2f;
 }
 
 
 .campo textarea {
     resize: vertical;
+
+    min-height: 90px;
 }
 
 
-/* ================================
-   PAGAMENTO
-================================ */
-
+/* ========================================
+   FORMAS DE PAGAMENTO
+======================================== */
 
 .opcoes-pagamento {
     display: grid;
+
     grid-template-columns: 1fr 1fr;
+
     gap: 12px;
 }
 
 
 .opcao-pagamento {
     border: 2px solid #eee;
+
     border-radius: 12px;
 
     padding: 15px;
@@ -272,15 +377,20 @@ body {
     cursor: pointer;
 
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 
     gap: 8px;
 
+    min-height: 55px;
+
     transition: 0.2s;
 
-    /* Mantém símbolo e nome bem alinhados */
-    min-height: 55px;
+    background: #fff;
+
+    color: #222;
 }
 
 
@@ -289,10 +399,13 @@ body {
 }
 
 
-/* Quando o cliente seleciona */
+/* PAGAMENTO SELECIONADO */
+
 .opcao-pagamento.selecionada {
     border-color: #006c2f;
+
     background: #006c2f;
+
     color: #fff;
 }
 
@@ -300,9 +413,10 @@ body {
 .opcao-pagamento span {
     font-size: 20px;
 
-    /* Mantém o símbolo alinhado */
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 
     line-height: 1;
@@ -311,57 +425,76 @@ body {
 
 .opcao-pagamento strong {
     font-size: 15px;
+
     line-height: 1;
 }
 
 
-
-/* ================================
-   RESUMO
-================================ */
+/* ========================================
+   RESUMO / TOTAL
+======================================== */
 
 .resumo {
     background: #111;
-    color: white;
+
+    color: #fff;
+
     padding: 20px;
+
     border-radius: 16px;
+
     margin-bottom: 15px;
 }
 
 
 .resumo h3 {
     display: flex;
+
     justify-content: space-between;
+
     align-items: center;
+
     font-size: 18px;
 }
 
 
 #total {
     font-size: 25px;
+
+    font-weight: bold;
 }
 
 
-/* ================================
+/* ========================================
    BOTÃO FINALIZAR
-================================ */
+======================================== */
 
 .continuar {
     width: 100%;
+
     border: none;
+
     border-radius: 14px;
+
     padding: 17px;
+
     background: #006c2f;
-    color: white;
+
+    color: #fff;
+
     font-size: 17px;
+
     font-weight: bold;
+
     cursor: pointer;
+
     transition: 0.2s;
 }
 
 
 .continuar:hover {
-    opacity: 0.9;
+    background: #005624;
+
     transform: translateY(-1px);
 }
 
@@ -371,51 +504,75 @@ body {
 }
 
 
-/* ================================
+/* ========================================
    MODAL DE SUCESSO
-================================ */
+======================================== */
 
 .sucesso-modal {
     position: fixed;
-    inset: 0;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100vh;
 
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 
     background: rgba(0, 0, 0, 0.55);
 
     opacity: 0;
+
     visibility: hidden;
+
+    pointer-events: none;
 
     transition:
         opacity 0.25s ease,
         visibility 0.25s ease;
 
-    z-index: 9999;
+    z-index: 99999;
 }
 
+
+/* MODAL ATIVO */
 
 .sucesso-modal.ativo {
     opacity: 1;
+
     visibility: visible;
+
+    pointer-events: auto;
 }
 
 
+/* ========================================
+   CAIXA DE SUCESSO
+======================================== */
+
 .sucesso-box {
     width: calc(100% - 40px);
+
     max-width: 380px;
 
-    background: white;
+    background: #fff;
+
     border-radius: 22px;
 
     padding: 35px 25px;
 
     text-align: center;
 
-    transform: scale(0.8);
+    transform: scale(0.75);
 
     transition: transform 0.3s ease;
+
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.2);
 }
 
 
@@ -424,9 +581,9 @@ body {
 }
 
 
-/* ================================
+/* ========================================
    CÍRCULO DO CHECK
-================================ */
+======================================== */
 
 .check-circle {
     width: 90px;
@@ -439,10 +596,13 @@ body {
     background: #e9f8ee;
 
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 
-    animation: aparecerCirculo 0.45s ease forwards;
+    animation:
+        aparecerCirculo 0.45s ease forwards;
 }
 
 
@@ -452,49 +612,64 @@ body {
 
     fill: none;
 
-    stroke: #20a04b;
+    stroke: #006c2f;
 
     stroke-width: 5;
 
     stroke-linecap: round;
+
     stroke-linejoin: round;
 }
 
 
 .check path {
     stroke-dasharray: 60;
+
     stroke-dashoffset: 60;
 
-    animation: desenharCheck 0.55s ease 0.25s forwards;
+    animation:
+        desenharCheck 0.55s ease 0.25s forwards;
 }
 
 
+/* ========================================
+   TEXTO DO MODAL
+======================================== */
+
 .sucesso-box h2 {
     font-size: 24px;
+
     margin-bottom: 10px;
+
+    color: #222;
 }
 
 
 .sucesso-box p {
     color: #666;
+
     margin-bottom: 12px;
+
     line-height: 1.5;
 }
 
 
 .sucesso-box small {
     color: #888;
+
+    font-size: 13px;
 }
 
 
-/* ================================
-   ANIMAÇÕES
-================================ */
+/* ========================================
+   ANIMAÇÃO DO CÍRCULO
+======================================== */
 
 @keyframes aparecerCirculo {
 
     0% {
         transform: scale(0);
+
         opacity: 0;
     }
 
@@ -504,10 +679,15 @@ body {
 
     100% {
         transform: scale(1);
+
         opacity: 1;
     }
 }
 
+
+/* ========================================
+   ANIMAÇÃO DO CHECK
+======================================== */
 
 @keyframes desenharCheck {
 
@@ -517,14 +697,34 @@ body {
 }
 
 
-/* ================================
-   RESPONSIVO
-================================ */
+/* ========================================
+   RESPONSIVO — CELULAR
+======================================== */
 
 @media (max-width: 500px) {
 
     .container {
         padding: 12px;
+    }
+
+
+    .header {
+        padding: 22px 15px;
+    }
+
+
+    .header h1 {
+        font-size: 26px;
+    }
+
+
+    .header p {
+        font-size: 15px;
+    }
+
+
+    .secao {
+        padding: 16px;
     }
 
 
@@ -538,20 +738,98 @@ body {
     }
 
 
+    /* Pagamento continua 2 x 2 no celular */
     .opcoes-pagamento {
         grid-template-columns: 1fr 1fr;
+
+        gap: 10px;
+    }
+
+
+    .opcao-pagamento {
+        padding: 13px 8px;
+
+        min-height: 52px;
+
+        gap: 6px;
+    }
+
+
+    .opcao-pagamento span {
+        font-size: 18px;
+    }
+
+
+    .opcao-pagamento strong {
+        font-size: 13px;
     }
 
 
     .produto img {
         width: 110px;
+
         height: 110px;
     }
 
 
-    .header h1 {
-        font-size: 26px;
+    .resumo h3 {
+        font-size: 17px;
+    }
+
+
+    #total {
+        font-size: 23px;
+    }
+
+
+    .continuar {
+        padding: 16px;
+
+        font-size: 16px;
+    }
+
+
+    .sucesso-box {
+        padding: 30px 20px;
+    }
+
+
+    .check-circle {
+        width: 80px;
+
+        height: 80px;
+    }
+
+
+    .check {
+        width: 48px;
+
+        height: 48px;
     }
 
 }
 
+
+/* ========================================
+   CELULARES MUITO PEQUENOS
+======================================== */
+
+@media (max-width: 360px) {
+
+    .opcao-pagamento {
+        padding: 12px 5px;
+
+        gap: 4px;
+    }
+
+
+    .opcao-pagamento span {
+        font-size: 17px;
+    }
+
+
+    .opcao-pagamento strong {
+        font-size: 12px;
+    }
+
+}
