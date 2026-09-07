@@ -1,8 +1,3 @@
-// =====================================================
-// VARIÁVEIS
-// =====================================================
-
-// Guarda a quantidade de cada produto
 const quantidades = {
     agua: 0,
     gas: 0
@@ -10,16 +5,14 @@ const quantidades = {
 
 
 // =====================================================
-// FUNÇÃO PARA FORMATAR DINHEIRO
+// FORMATAR DINHEIRO
 // =====================================================
 
 function formatarMoeda(valor) {
-
     return valor.toLocaleString("pt-BR", {
         style: "currency",
         currency: "BRL"
     });
-
 }
 
 
@@ -27,40 +20,32 @@ function formatarMoeda(valor) {
 // ALTERAR QUANTIDADE
 // =====================================================
 
-// Essa função é chamada pelos botões + e -
-
 function alterarQuantidade(produtoId, valor) {
 
-    // Verifica se o produto existe
     if (!(produtoId in quantidades)) {
         return;
     }
 
-    // Adiciona ou remove a quantidade
     quantidades[produtoId] += valor;
 
-    // Não permite quantidade negativa
     if (quantidades[produtoId] < 0) {
         quantidades[produtoId] = 0;
     }
 
-    // Pega o elemento que mostra a quantidade
     const elementoQuantidade =
         document.getElementById(`quantidade-${produtoId}`);
 
-    // Atualiza a quantidade na tela
     if (elementoQuantidade) {
         elementoQuantidade.textContent =
             quantidades[produtoId];
     }
 
-    // Atualiza o preço total
     atualizarTotal();
 }
 
 
 // =====================================================
-// PEGAR PREÇO DO PRODUTO
+// PEGAR PREÇO
 // =====================================================
 
 function obterPreco(produtoId) {
@@ -69,16 +54,12 @@ function obterPreco(produtoId) {
         item => item.id === produtoId
     );
 
-    if (produto) {
-        return produto.preco;
-    }
-
-    return 0;
+    return produto ? produto.preco : 0;
 }
 
 
 // =====================================================
-// PEGAR LOCAL SELECIONADO
+// PEGAR LOCAL
 // =====================================================
 
 function obterLocalSelecionado() {
@@ -86,12 +67,11 @@ function obterLocalSelecionado() {
     return document.querySelector(
         'input[name="local"]:checked'
     );
-
 }
 
 
 // =====================================================
-// PEGAR PAGAMENTO SELECIONADO
+// PEGAR PAGAMENTO
 // =====================================================
 
 function obterPagamentoSelecionado() {
@@ -99,7 +79,6 @@ function obterPagamentoSelecionado() {
     return document.querySelector(
         'input[name="pagamento"]:checked'
     );
-
 }
 
 
@@ -109,55 +88,18 @@ function obterPagamentoSelecionado() {
 
 function atualizarTotal() {
 
-    // Calcula o valor das águas
     const valorAgua =
         quantidades.agua * obterPreco("agua");
 
-
-    // Calcula o valor dos gases
     const valorGas =
         quantidades.gas * obterPreco("gas");
 
-
-    // Soma os produtos
     const subtotal =
         valorAgua + valorGas;
 
+    // Sem taxa de entrega
+    const total = subtotal;
 
-    // Começa com entrega grátis
-    let taxaEntrega = 0;
-
-
-    // Pega o local escolhido
-    const localSelecionado =
-        obterLocalSelecionado();
-
-
-    // Se existe um local selecionado
-    if (localSelecionado) {
-
-        // Procura o local na configuração
-        const local =
-            CONFIG.locais.find(
-                item =>
-                    item.nome === localSelecionado.value
-            );
-
-
-        // Se encontrou o local
-        if (local) {
-            taxaEntrega = local.taxa;
-        }
-
-    }
-
-
-    // Calcula o total
-    const total =
-        subtotal + taxaEntrega;
-
-
-    // Atualiza subtotal
     const elementoSubtotal =
         document.getElementById("subtotal");
 
@@ -166,18 +108,6 @@ function atualizarTotal() {
             formatarMoeda(subtotal);
     }
 
-
-    // Atualiza taxa de entrega
-    const elementoTaxa =
-        document.getElementById("taxa-entrega");
-
-    if (elementoTaxa) {
-        elementoTaxa.textContent =
-            formatarMoeda(taxaEntrega);
-    }
-
-
-    // Atualiza total
     const elementoTotal =
         document.getElementById("total");
 
@@ -185,7 +115,6 @@ function atualizarTotal() {
         elementoTotal.textContent =
             formatarMoeda(total);
     }
-
 }
 
 
@@ -197,109 +126,73 @@ function atualizarSelecaoVisual(tipo) {
 
     let opcoes = [];
 
-
-    // Se for local
     if (tipo === "local") {
-
         opcoes =
             document.querySelectorAll(
                 ".opcao-entrega"
             );
-
     }
 
-
-    // Se for pagamento
     if (tipo === "pagamento") {
-
         opcoes =
             document.querySelectorAll(
                 ".opcao-pagamento"
             );
-
     }
 
-
-    // Atualiza cada opção
     opcoes.forEach(opcao => {
 
         const input =
             opcao.querySelector("input");
 
-
         if (input && input.checked) {
-
             opcao.classList.add("selecionada");
-
         } else {
-
             opcao.classList.remove("selecionada");
-
         }
-
     });
-
 }
 
 
 // =====================================================
-// ATUALIZAR AVISO DE RIACHÃO DE CIMA
+// AVISO RIACHÃO DE CIMA
 // =====================================================
 
 function atualizarAvisoEntrega() {
 
-    // Pega o local selecionado
     const localSelecionado =
         obterLocalSelecionado();
 
-
-    // Pega o aviso
     const aviso =
         document.getElementById(
             "aviso-riachao-cima"
         );
 
-
-    // Se o aviso não existir, para aqui
     if (!aviso) {
         return;
     }
 
-
-    // Se escolheu Riachão de Cima
     if (
         localSelecionado &&
         localSelecionado.value === "Riachão de Cima"
     ) {
-
-        // Mostra o aviso
         aviso.style.display = "block";
-
     } else {
-
-        // Esconde o aviso
         aviso.style.display = "none";
-
     }
-
 }
 
 
 // =====================================================
-// CONFIGURAR OS RADIOS
+// CONFIGURAR RADIOS
 // =====================================================
 
 function configurarSelecoes() {
-
-    // -------------------------------------------------
-    // LOCAIS
-    // -------------------------------------------------
 
     const locais =
         document.querySelectorAll(
             'input[name="local"]'
         );
-
 
     locais.forEach(input => {
 
@@ -307,30 +200,17 @@ function configurarSelecoes() {
             "change",
             function () {
 
-                // Atualiza o visual
                 atualizarSelecaoVisual("local");
-
-                // Atualiza o preço
-                atualizarTotal();
-
-                // Atualiza o aviso
                 atualizarAvisoEntrega();
-
             }
         );
-
     });
 
-
-    // -------------------------------------------------
-    // PAGAMENTOS
-    // -------------------------------------------------
 
     const pagamentos =
         document.querySelectorAll(
             'input[name="pagamento"]'
         );
-
 
     pagamentos.forEach(input => {
 
@@ -341,23 +221,14 @@ function configurarSelecoes() {
                 atualizarSelecaoVisual(
                     "pagamento"
                 );
-
             }
         );
-
     });
 
 
-    // -------------------------------------------------
-    // ESTADO INICIAL
-    // -------------------------------------------------
-
     atualizarSelecaoVisual("local");
-
     atualizarSelecaoVisual("pagamento");
-
     atualizarAvisoEntrega();
-
 }
 
 
@@ -391,7 +262,6 @@ function finalizarPedido() {
     const localSelecionado =
         obterLocalSelecionado();
 
-
     if (!localSelecionado) {
 
         alert(
@@ -420,7 +290,7 @@ function finalizarPedido() {
 
 
     // -------------------------------------------------
-    // PEGAR DADOS DO CLIENTE
+    // DADOS DO CLIENTE
     // -------------------------------------------------
 
     const nome =
@@ -429,20 +299,17 @@ function finalizarPedido() {
             .value
             .trim();
 
-
     const referencia =
         document
             .getElementById("referencia")
             .value
             .trim();
 
-
     const whatsapp =
         document
             .getElementById("whatsapp")
             .value
             .trim();
-
 
     const observacao =
         document
@@ -466,20 +333,6 @@ function finalizarPedido() {
 
 
     // -------------------------------------------------
-    // VALIDAR REFERÊNCIA
-    // -------------------------------------------------
-
-    if (!referencia) {
-
-        alert(
-            "Informe um ponto de referência."
-        );
-
-        return;
-    }
-
-
-    // -------------------------------------------------
     // VALIDAR WHATSAPP
     // -------------------------------------------------
 
@@ -494,12 +347,11 @@ function finalizarPedido() {
 
 
     // -------------------------------------------------
-    // PEGAR PAGAMENTO
+    // PAGAMENTO
     // -------------------------------------------------
 
     const pagamentoSelecionado =
         obterPagamentoSelecionado();
-
 
     if (!pagamentoSelecionado) {
 
@@ -512,7 +364,7 @@ function finalizarPedido() {
 
 
     // -------------------------------------------------
-    // CALCULAR SUBTOTAL
+    // CALCULAR TOTAL
     // -------------------------------------------------
 
     const subtotal =
@@ -525,32 +377,7 @@ function finalizarPedido() {
             obterPreco("gas")
         );
 
-
-    // -------------------------------------------------
-    // CALCULAR ENTREGA
-    // -------------------------------------------------
-
-    let taxaEntrega = 0;
-
-
-    const localConfig =
-        CONFIG.locais.find(
-            item =>
-                item.nome === localSelecionado.value
-        );
-
-
-    if (localConfig) {
-        taxaEntrega = localConfig.taxa;
-    }
-
-
-    // -------------------------------------------------
-    // TOTAL
-    // -------------------------------------------------
-
-    const total =
-        subtotal + taxaEntrega;
+    const total = subtotal;
 
 
     // -------------------------------------------------
@@ -560,64 +387,46 @@ function finalizarPedido() {
     let mensagem =
         "🛒 *NOVO PEDIDO*\n\n";
 
-
     mensagem +=
         "📦 *Produtos:*\n";
-
 
     if (quantidades.agua > 0) {
 
         mensagem +=
             `💧 Água Mineral 20L: ${quantidades.agua}\n`;
-
     }
-
 
     if (quantidades.gas > 0) {
 
         mensagem +=
             `🔥 Gás P13: ${quantidades.gas}\n`;
-
     }
-
 
     mensagem +=
         `\n📍 *Local:* ${localSelecionado.value}\n`;
 
-
     mensagem +=
         `💰 *Pagamento:* ${pagamentoSelecionado.value}\n`;
 
-
     mensagem +=
-        `💵 *Subtotal:* ${formatarMoeda(subtotal)}\n`;
-
-
-    mensagem +=
-        `🚚 *Entrega:* ${formatarMoeda(taxaEntrega)}\n`;
-
-
-    mensagem +=
-        `💰 *TOTAL:* ${formatarMoeda(total)}\n\n`;
-
+        `💵 *TOTAL:* ${formatarMoeda(total)}\n\n`;
 
     mensagem +=
         `👤 *Cliente:* ${nome}\n`;
 
-
     mensagem +=
         `📱 *WhatsApp:* ${whatsapp}\n`;
 
+    if (referencia) {
 
-    mensagem +=
-        `📌 *Referência:* ${referencia}\n`;
-
+        mensagem +=
+            `📌 *Referência:* ${referencia}\n`;
+    }
 
     if (observacao) {
 
         mensagem +=
             `📝 *Observação:* ${observacao}\n`;
-
     }
 
 
@@ -645,27 +454,22 @@ function finalizarPedido() {
     const url =
         `https://wa.me/${CONFIG.whatsappDono}?text=${encodeURIComponent(mensagem)}`;
 
-
     window.open(
         url,
         "_blank"
     );
-
 }
 
 
 // =====================================================
-// INICIAR O SITE
+// INICIAR SITE
 // =====================================================
 
 document.addEventListener(
     "DOMContentLoaded",
     function () {
 
-        // Configura os locais e pagamentos
         configurarSelecoes();
-
-        // Calcula o total inicial
         atualizarTotal();
 
     }
