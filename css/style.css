@@ -1,0 +1,411 @@
+
+/* ============================================================
+   CONFIGURAÇÃO GERAL
+   ============================================================ */
+
+* {
+    box-sizing: border-box;
+}
+
+
+/* ============================================================
+   BODY
+   ============================================================ */
+
+body {
+    margin: 0;
+    background: #ffffff;
+    color: #092f68;
+    font-family: Arial, sans-serif;
+}
+
+
+/* ============================================================
+   CONTAINER PRINCIPAL
+   ============================================================ */
+
+.container {
+    width: min(100%, 520px);
+    margin: auto;
+    padding: 24px 17px;
+}
+
+
+/* ============================================================
+   CABEÇALHO
+   ============================================================ */
+
+header {
+    margin: -24px -17px 26px;
+    padding: 24px 20px;
+    background: #e5f0ff;
+    border-radius: 0 0 22px 22px;
+}
+
+
+header h1 {
+    margin: 0;
+    font-size: 25px;
+}
+
+
+header p {
+    margin: 5px 0 0;
+    color: #45648d;
+    font-size: 13px;
+}
+
+
+/* ============================================================
+   SEÇÕES
+   ============================================================ */
+
+section {
+    margin-bottom: 28px;
+}
+
+
+h2 {
+    margin: 0 0 14px;
+    font-size: 16px;
+}
+
+
+/* ============================================================
+   PRODUTOS
+   ============================================================ */
+
+.produto {
+    display: flex;
+    align-items: center;
+    gap: 17px;
+    min-height: 108px;
+    margin-bottom: 16px;
+    padding: 18px;
+    border: 1px solid #dce7f5;
+    border-radius: 20px;
+    box-shadow: 0 7px 17px #1a4b7d14;
+}
+
+
+/* Imagem do produto */
+
+.produto img {
+    width: 70px;
+    height: 70px;
+    object-fit: contain;
+    border-radius: 16px;
+    background: #f3f8fe;
+}
+
+
+/* Informações do produto */
+
+.produto-info {
+    flex: 1;
+}
+
+
+.produto-info strong,
+.produto-info b {
+    display: block;
+}
+
+
+.produto-info strong {
+    margin-bottom: 6px;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+
+.produto-info b {
+    font-size: 21px;
+}
+
+
+/* ============================================================
+   CORES DOS PRODUTOS
+   ============================================================ */
+
+.agua {
+    color: #1976ed;
+}
+
+
+.gas {
+    color: #f66b08;
+}
+
+
+/* ============================================================
+   CONTROLE DE QUANTIDADE
+   ============================================================ */
+
+.controle {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+
+.controle button {
+    width: 47px;
+    height: 47px;
+    border: 0;
+    border-radius: 13px;
+    color: white;
+    cursor: pointer;
+    font-size: 28px;
+}
+
+
+/* Botões da água */
+
+.agua-bg button {
+    background: #1976ed;
+}
+
+
+/* Botões do gás */
+
+.gas-bg button {
+    background: #f66b08;
+}
+
+
+/* Número da quantidade */
+
+.controle span {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+
+/* ============================================================
+   INPUTS E TEXTAREA
+   ============================================================ */
+
+select,
+input,
+textarea {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 16px 14px;
+    border: 1px solid #dce7f5;
+    border-radius: 13px;
+    outline: none;
+    color: #45648d;
+    font: inherit;
+    background: #fbfdff;
+}
+
+
+textarea {
+    min-height: 70px;
+    resize: vertical;
+}
+
+
+/* ============================================================
+   OPÇÕES DE ENTREGA E PAGAMENTO
+   ============================================================ */
+
+.opcoes-entrega,
+.opcoes-pagamento {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+
+/* ============================================================
+   OPÇÕES DE ENTREGA
+   ============================================================ */
+
+.opcao-entrega {
+    flex: 1;
+    min-width: 220px;
+    padding: 22px;
+    border: 2px solid #dbe5f2;
+    border-radius: 15px;
+    color: #102f61;
+    cursor: pointer;
+    font-size: 18px;
+    text-align: center;
+}
+
+
+/* Local selecionado */
+
+.opcao-entrega.selecionada {
+    border-color: #087eff;
+    background: #f1f8ff;
+}
+
+/* Esconde o aviso inicialmente */
+#aviso-riachao-cima {
+    display: none;
+}
+
+/* Esconde o radio original */
+
+.opcao-entrega input {
+    display: none;
+}
+
+
+/* Ícone de localização */
+
+.icone-local {
+    color: #1976ed;
+    margin-right: 14px;
+}
+
+
+/* ============================================================
+   AVISO DE ENTREGA
+   ============================================================ */
+
+.aviso-entrega {
+    margin-top: 16px;
+    padding: 14px;
+    border: 1px solid #f1d47b;
+    border-radius: 13px;
+    background: #fffbea;
+    color: #8a4b00;
+}
+
+
+/* ============================================================
+   OPÇÕES DE PAGAMENTO
+   ============================================================ */
+
+.opcao-pagamento {
+    position: relative;
+    flex: 1;
+    min-width: 150px;
+    min-height: 108px;
+    padding: 18px;
+    border: 2px solid #dbe5f2;
+    border-radius: 15px;
+    color: #102f61;
+    cursor: pointer;
+
+    /* Impede seleção de texto ao clicar rapidamente */
+    user-select: none;
+}
+
+
+/* Pagamento selecionado */
+
+.opcao-pagamento.selecionada {
+    border-color: #087eff;
+    background: #f1f8ff;
+}
+
+
+/* Esconde o radio original */
+
+.opcao-pagamento input {
+    display: none;
+}
+
+
+/* Nome do pagamento */
+
+.opcao-pagamento strong {
+    display: block;
+    margin-top: 22px;
+    font-size: 14px;
+}
+
+
+/* Ícone do pagamento */
+
+.icone-pagamento {
+    color: #527092;
+    font-size: 24px;
+}
+
+
+/* ============================================================
+   CÍRCULO DO RADIO
+   ============================================================ */
+
+.radio {
+    position: absolute;
+    top: 24px;
+    right: 18px;
+    width: 19px;
+    height: 19px;
+    border: 2px solid #ccd9e8;
+    border-radius: 50%;
+}
+
+
+/* Círculo quando selecionado */
+
+.opcao-pagamento.selecionada .radio {
+    border: 5px solid #087eff;
+}
+
+
+/* ============================================================
+   RESUMO
+   ============================================================ */
+
+.resumo {
+    padding: 17px 16px;
+    border: 1px solid #dce7f5;
+    border-radius: 17px;
+    background: #f4f8fc;
+}
+
+
+.resumo p {
+    display: flex;
+    justify-content: space-between;
+    margin: 4px 0 10px;
+    color: #45648d;
+    font-size: 14px;
+}
+
+
+.resumo h3 {
+    display: flex;
+    justify-content: space-between;
+    margin: 12px 0 0;
+    font-size: 20px;
+}
+
+
+/* ============================================================
+   BOTÃO CONTINUAR
+   ============================================================ */
+
+.continuar {
+    width: 100%;
+    margin-top: 25px;
+    padding: 17px;
+    border: 0;
+    border-radius: 14px;
+    background: #20a457;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+
+/* ============================================================
+   RESPONSIVIDADE
+   ============================================================ */
+
+@media (max-width: 600px) {
+
+    .opcao-pagamento {
+        min-width: 140px;
+    }
+
+}
