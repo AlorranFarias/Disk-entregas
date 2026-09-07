@@ -1,417 +1,216 @@
 <!doctype html>
 <html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<head>
-    <!-- =====================================================
-         CONFIGURAÇÕES BÁSICAS DA PÁGINA
-         ===================================================== -->
+    <title>Disk Entregas - Água e Gás</title>
 
-    <!-- Permite utilizar caracteres como ç, ã, é, etc. -->
-    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
 
-    <!-- Faz o site funcionar corretamente em celulares -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- Nome exibido na aba do navegador -->
-    <title>Água & Gás</title>
-
-    <!-- Arquivo responsável pelo visual do site -->
-    <link rel="stylesheet" href="./css/style.css">
-</head>
-
-<body>
-
-    <!-- =====================================================
-         CONTAINER PRINCIPAL
-         ===================================================== -->
-
+  <body>
     <main class="container">
+      <!-- CABEÇALHO -->
+      <header class="header">
+        <h1>🛵 Disk Entregas</h1>
+        <p>Água e Gás na sua casa</p>
+      </header>
 
-        <!-- =====================================================
-             CABEÇALHO
-             ===================================================== -->
+      <!-- PRODUTOS -->
+      <section class="secao">
+        <h2>🛒 ESCOLHA SEU PRODUTO</h2>
 
-        <header>
+        <div class="produtos">
+          <!-- ÁGUA -->
+          <div class="produto agua">
+            <img src="./image/agua.webp" alt="Água Mineral 20L">
 
-            <!-- Nome da empresa -->
-            <h1>ÁGUA & GÁS</h1>
+            <div class="produto-info">
+              <h3>💧 Água Mineral 20L</h3>
 
-            <!-- Descrição da empresa -->
-            <p>Peça sua água ou gás de forma rápida e fácil.</p>
+              <p class="preco">R$ 6,50</p>
 
-        </header>
+              <div class="quantidade">
+                <button type="button" onclick="alterarQuantidade('agua', -1)">
+                  −
+                </button>
 
+                <span id="quantidade-agua">0</span>
 
-        <!-- =====================================================
-             PRODUTOS
-             ===================================================== -->
-
-        <section>
-
-            <h2>PRODUTOS — SELECIONE</h2>
-
-
-            <!-- ===================== ÁGUA ===================== -->
-
-            <div class="produto">
-
-                <!-- Imagem da água -->
-                <img
-                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/agua-JgZS2rcspgT8cYBikVsJyADTEUoL0s.webp"
-                    alt="Água Mineral 20L"
-                >
-
-                <!-- Informações da água -->
-                <div class="produto-info">
-
-                    <strong>Água Mineral 20L</strong>
-
-                    <b class="agua">R$ 6,50</b>
-
-                </div>
-
-
-                <!-- Controle de quantidade -->
-                <div class="controle agua-bg">
-
-                    <!-- Diminuir quantidade -->
-                    <button
-                        type="button"
-                        onclick="alterarQuantidade('agua', -1)"
-                    >
-                        −
-                    </button>
-
-
-                    <!-- Quantidade atual -->
-                    <span id="quantidade-agua">0</span>
-
-
-                    <!-- Aumentar quantidade -->
-                    <button
-                        type="button"
-                        onclick="alterarQuantidade('agua', 1)"
-                    >
-                        +
-                    </button>
-
-                </div>
-
+                <button type="button" onclick="alterarQuantidade('agua', 1)">
+                  +
+                </button>
+              </div>
             </div>
+          </div>
 
+          <!-- GÁS -->
+          <div class="produto gas">
+            <img src="./image/gas.webp" alt="Gás P13">
 
-            <!-- ====================== GÁS ====================== -->
+            <div class="produto-info">
+              <h3>🔥 Gás </h3>
 
-            <div class="produto">
+              <p class="preco">R$ 125,00</p>
 
-                <!-- Imagem do gás -->
-                <img
-                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/gas-ilJqeSXCYndpaoGcPdztcKReqQavNZ.png"
-                    alt="Botijão de gás"
-                >
+              <div class="quantidade">
+                <button type="button" onclick="alterarQuantidade('gas', -1)">
+                  −
+                </button>
 
+                <span id="quantidade-gas">0</span>
 
-                <!-- Informações do gás -->
-                <div class="produto-info">
-
-                    <strong>Gás</strong>
-
-                    <b class="gas">R$ 125,00</b>
-
-                </div>
-
-
-                <!-- Controle de quantidade -->
-                <div class="controle gas-bg">
-
-                    <!-- Diminuir quantidade -->
-                    <button
-                        type="button"
-                        onclick="alterarQuantidade('gas', -1)"
-                    >
-                        −
-                    </button>
-
-
-                    <!-- Quantidade atual -->
-                    <span id="quantidade-gas">0</span>
-
-
-                    <!-- Aumentar quantidade -->
-                    <button
-                        type="button"
-                        onclick="alterarQuantidade('gas', 1)"
-                    >
-                        +
-                    </button>
-
-                </div>
-
+                <button type="button" onclick="alterarQuantidade('gas', 1)">
+                  +
+                </button>
+              </div>
             </div>
+          </div>
+        </div>
+      </section>
 
-        </section>
+      <!-- LOCAL DE ENTREGA -->
+      <section class="secao">
+        <h2>📍 LOCAL DE ENTREGA</h2>
 
+        <div class="opcoes-entrega">
+          <label class="opcao-entrega selecionada">
+            <input type="radio" name="local" value="Riachão" checked />
 
-        <!-- =====================================================
-             DADOS DO CLIENTE
-             ===================================================== -->
+            <span class="icone-local">📍</span>
 
-        <section class="secao">
+            <strong>Riachão</strong>
+          </label>
 
-            <h2>SEUS DADOS</h2>
+          <label class="opcao-entrega">
+            <input type="radio" name="local" value="Riachão de Cima" />
 
+            <span class="icone-local">📍</span>
 
-            <!-- =================================================
-                 NOME / APELIDO
+            <strong>Riachão de Cima</strong>
+          </label>
+        </div>
 
-                 required = campo obrigatório
-                 ================================================= -->
+        <div id="aviso-riachao-cima" class="aviso-entrega">
+          ⚠ Riachão de Cima: mínimo de 2 águas.
+        </div>
+      </section>
 
-            <input
-                id="nome"
-                type="text"
-                placeholder="Nome/apelido *"
-                required
-            >
+      <!-- DADOS DO CLIENTE -->
+      <section class="secao">
+        <h2>👤 SEUS DADOS</h2>
 
+        <div class="campo">
+          <label for="nome"> Nome ou apelido * </label>
 
-            <!-- =================================================
-                 WHATSAPP
+          <input type="text" id="nome" placeholder="Ex: João" />
+        </div>
 
-                 required = campo obrigatório
-                 ================================================= -->
+        <div class="campo">
+          <label for="whatsapp"> WhatsApp * </label>
 
-            <input
-                id="whatsapp"
-                type="tel"
-                placeholder="WhatsApp *"
-                required
-            >
+          <input type="tel" id="whatsapp" placeholder="Ex: (85) 99999-9999" />
+        </div>
 
+        <div class="campo">
+          <label for="referencia"> Ponto de referência </label>
 
-            <!-- =================================================
-                 PONTO DE REFERÊNCIA
+          <input
+            type="text"
+            id="referencia"
+            placeholder="Ex: Próximo à praça"
+          />
+        </div>
 
-                 NÃO possui required.
-                 Portanto, é opcional.
-                 ================================================= -->
+        <div class="campo">
+          <label for="observacao"> Observação </label>
 
-            <input
-                id="referencia"
-                type="text"
-                placeholder="Ponto de referência"
-            >
+          <textarea
+            id="observacao"
+            rows="3"
+            placeholder="Alguma informação adicional?"
+          ></textarea>
+        </div>
+      </section>
 
+      <!-- PAGAMENTO -->
+      <section class="secao">
+        <h2>💳 FORMA DE PAGAMENTO</h2>
 
-            <!-- =================================================
-                 OBSERVAÇÃO
+        <div class="opcoes-pagamento">
+          <label class="opcao-pagamento">
+            <input type="radio" name="pagamento" value="Pix" />
 
-                 NÃO possui required.
-                 Portanto, é opcional.
-                 ================================================= -->
+            <span>💠</span>
 
-            <textarea
-                id="observacao"
-                placeholder="Observação (opcional)"
-            ></textarea>
+            <strong>Pix</strong>
+          </label>
 
-        </section>
+          <label class="opcao-pagamento">
+            <input type="radio" name="pagamento" value="Cartão de crédito" />
 
+            <span>💳</span>
 
-        <!-- =====================================================
-             LOCAL DE ENTREGA
-             ===================================================== -->
+            <strong>Crédito</strong>
+          </label>
 
-        <section class="secao">
+          <label class="opcao-pagamento">
+            <input type="radio" name="pagamento" value="Cartão de débito" />
 
-            <h2>📍 LOCAL DE ENTREGA:</h2>
+            <span>💳</span>
 
+            <strong>Débito</strong>
+          </label>
 
-            <div class="opcoes-entrega">
+          <label class="opcao-pagamento">
+            <input type="radio" name="pagamento" value="Dinheiro" />
 
-
-                <!-- ===================== RIACHÃO ===================== -->
-
-                <label class="opcao-entrega selecionada">
-
-                    <input
-                        type="radio"
-                        name="local"
-                        value="Riachão"
-                        data-taxa="0"
-                        checked
-                    >
-
-                    <span class="icone-local">📍</span>
-
-                    <strong>Riachão</strong>
-
-                </label>
-
-
-                <!-- ================= RIACHÃO DE CIMA ================= -->
-
-                <label class="opcao-entrega">
-
-                    <input
-                        type="radio"
-                        name="local"
-                        value="Riachão de Cima"
-                        data-taxa="5"
-                    >
-
-                    <span class="icone-local">📍</span>
-
-                    <strong>Riachão de Cima</strong>
-
-                </label>
-
-            </div>
-
-
-            <!-- Aviso exibido somente quando Riachão de Cima for selecionado -->
-
-            <div
-                id="aviso-riachao-cima"
-                class="aviso-entrega"
-            >
-                ⚠ Riachão de Cima: mínimo de 2 águas.
-            </div>
-
-        </section>
-
-
-        <!-- =====================================================
-             FORMA DE PAGAMENTO
-             ===================================================== -->
-
-        <section class="secao">
-
-            <h2>💳 FORMA DE PAGAMENTO</h2>
-
-
-            <div class="opcoes-pagamento">
-
-
-                <!-- ======================== PIX ======================== -->
-
-                <label class="opcao-pagamento selecionada">
-
-                    <input
-                        type="radio"
-                        name="pagamento"
-                        value="Pix"
-                        checked
-                    >
-
-                    <span class="icone-pagamento">◆</span>
-
-                    <strong>Pix</strong>
-
-                    <span class="radio"></span>
-
-                </label>
-
-
-                <!-- ================= CARTÃO DE CRÉDITO ================= -->
-
-                <label class="opcao-pagamento">
-
-                    <input
-                        type="radio"
-                        name="pagamento"
-                        value="Cartão de crédito"
-                    >
-
-                    <span class="icone-pagamento">▣</span>
-
-                    <strong>Cartão de crédito</strong>
-
-                    <span class="radio"></span>
-
-                </label>
-
-
-                <!-- ================= CARTÃO DE DÉBITO ================= -->
-
-                <label class="opcao-pagamento">
-
-                    <input
-                        type="radio"
-                        name="pagamento"
-                        value="Cartão de débito"
-                    >
-
-                    <span class="icone-pagamento">▣</span>
-
-                    <strong>Cartão de débito</strong>
-
-                    <span class="radio"></span>
-
-                </label>
-
-
-                <!-- ======================= DINHEIRO ======================= -->
-
-                <label class="opcao-pagamento">
-
-                    <input
-                        type="radio"
-                        name="pagamento"
-                        value="Dinheiro"
-                    >
-
-                    <span class="icone-pagamento">▤</span>
-
-                    <strong>Dinheiro</strong>
-
-                    <span class="radio"></span>
-
-                </label>
-
-            </div>
-
-        </section>
-
-
-        <!-- =====================================================
-             RESUMO DO PEDIDO
-             ===================================================== -->
-
-        <div class="resumo">
-    <h3>
-        TOTAL
-        <span id="total">R$ 0,00</span>
-    </h3>
-    
-</div>
-        <!-- =====================================================
-             BOTÃO CONTINUAR
-             ===================================================== -->
-
-        <button
-            type="button"
-            class="continuar"
-            onclick="finalizarPedido()"
-        >
-            CONTINUAR
-        </button>
-
+            <span>💵</span>
+
+            <strong>Dinheiro</strong>
+          </label>
+        </div>
+      </section>
+
+      <!-- TOTAL -->
+      <section class="resumo">
+        <h3>
+          TOTAL
+
+          <span id="total"> R$ 0,00 </span>
+        </h3>
+      </section>
+
+      <!-- FINALIZAR -->
+      <button type="button" class="continuar" onclick="finalizarPedido()">
+        FINALIZAR PEDIDO
+      </button>
     </main>
 
+    <!-- =========================================
+         MODAL DE PEDIDO REALIZADO
+         ========================================= -->
 
-    <!-- =====================================================
-         JAVASCRIPT
+    <div id="sucesso-modal" class="sucesso-modal">
+      <div class="sucesso-box">
+        <div class="check-circle">
+          <svg class="check" viewBox="0 0 52 52">
+            <path d="M14 27 L22 35 L39 17"></path>
+          </svg>
+        </div>
 
-         IMPORTANTE:
-         config.js vem PRIMEIRO.
-         app.js vem DEPOIS.
-         ===================================================== -->
+        <h2>Pedido realizado!</h2>
+
+        <p>Seu pedido foi registrado com sucesso.</p>
+
+        <small> Enviando para o WhatsApp... </small>
+      </div>
+    </div>
+
+    <!-- JAVASCRIPT -->
 
     <script src="./javascript/config.js"></script>
-
     <script src="./javascript/app.js"></script>
-
-</body>
-
+  </body>
 </html>
